@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get_it/get_it.dart';
 
 
 /// Extension on [BuildContext] to provide navigation methods.
