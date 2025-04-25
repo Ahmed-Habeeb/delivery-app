@@ -1,5 +1,6 @@
 
-import '../shared_widgets/app_text_field.dart';
+
+import '../widgets/app_text_field.dart';
 
 /// A helper class for validating various types of input.
 class ValidationHelper {

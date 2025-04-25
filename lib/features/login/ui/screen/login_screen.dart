@@ -1,11 +1,13 @@
-import 'package:delivery_app/core/shared_widgets/app_button.dart';
-import 'package:delivery_app/core/shared_widgets/app_text_field.dart';
+import 'package:delivery_app/core/helper/extensions.dart';
+import 'package:delivery_app/core/routing/routes.dart';
 import 'package:delivery_app/core/theme/text_styles.dart';
 import 'package:delivery_app/features/login/ui/widgets/login_header.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import '../../../../core/widgets/app_button.dart';
+import '../../../../core/widgets/app_text_field.dart';
 import '../../../../generated/assets.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -47,8 +49,12 @@ class LoginScreen extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: 16.h),
-                AppButton(text: "Log in",)
-
+                AppButton(
+                  text: "Log in",
+                  onPressed: () {
+                    context.offAllNamed(Routes.home);
+                  },
+                ),
               ],
             ),
           ),
