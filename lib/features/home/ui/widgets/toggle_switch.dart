@@ -1,5 +1,7 @@
 import 'package:delivery_app/core/theme/colors_manager.dart';
+import 'package:delivery_app/features/home/ui/cubit/home_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ToggleSwitch extends StatefulWidget {
@@ -10,11 +12,10 @@ class ToggleSwitch extends StatefulWidget {
 }
 
 class _ToggleSwitchState extends State<ToggleSwitch> {
-  bool isNewSelected = true;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return BlocBuilder<HomeCubit,HomeState>(builder: (context, state) => Container(
       width: 200,
       height: 36.h,
       decoration: BoxDecoration(
@@ -34,7 +35,7 @@ class _ToggleSwitchState extends State<ToggleSwitch> {
           // Background for the selected option
           AnimatedPositioned(
             duration: Duration(milliseconds: 200),
-            left: isNewSelected ? 0 : 100,
+            left: context.read<HomeCubit>().isNewSelected ? 0 : 100,
             child: Container(
               width: 100,
               height: 36.h,
@@ -52,15 +53,14 @@ class _ToggleSwitchState extends State<ToggleSwitch> {
                   splashColor: Colors.transparent,
                   highlightColor: Colors.transparent,
                   onTap: () {
-                    setState(() {
-                      isNewSelected = true;
-                    });
+                    context.read<HomeCubit>().changeNewBillState(true);
+
                   },
                   child: Center(
                     child: Text(
                       'New',
                       style: TextStyle(
-                        color: isNewSelected ? Colors.white : Colors.black,
+                        color:context.read<HomeCubit>(). isNewSelected ? Colors.white : Colors.black,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -72,15 +72,14 @@ class _ToggleSwitchState extends State<ToggleSwitch> {
                   splashColor: Colors.transparent,
                   highlightColor: Colors.transparent,
                   onTap: () {
-                    setState(() {
-                      isNewSelected = false;
-                    });
+                    context.read<HomeCubit>().changeNewBillState(false);
+
                   },
                   child: Center(
                     child: Text(
                       'Others',
                       style: TextStyle(
-                        color: isNewSelected ? Colors.black : Colors.white,
+                        color:context.read<HomeCubit>(). isNewSelected ? Colors.black : Colors.white,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -91,6 +90,6 @@ class _ToggleSwitchState extends State<ToggleSwitch> {
           ),
         ],
       ),
-    );
+    ));
   }
 }

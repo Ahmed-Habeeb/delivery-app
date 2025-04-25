@@ -45,6 +45,7 @@ dependencies:
       url: https://github.com/Ahmed-Habeeb/phone_field.git
   shared_preferences: ^2.5.2
   flutter_screenutil: ^5.9.3
+  sqflite: ^2.4.2
 
 dev_dependencies:
   flutter_test:

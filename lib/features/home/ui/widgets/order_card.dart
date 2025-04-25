@@ -1,3 +1,4 @@
+import 'package:delivery_app/core/helper/extensions.dart';
 import 'package:delivery_app/core/theme/text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -73,7 +74,7 @@ class OrderCard extends StatelessWidget {
 
                       _buildColumn(
                         'Total price',
-                        totalPrice,
+                        totalPrice.limit(8),
                         TextStyles.font16SemiBoldMainColor,
                       ),
                       // vertical divider

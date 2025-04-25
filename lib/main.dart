@@ -122,7 +122,7 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
         onGenerateRoute: AppRouter.generateRoute,
 
         /// Sets the initial route of the application.
-        initialRoute: (!kDebugMode) ? Routes.splash : Routes.splash,
+        initialRoute: (!kDebugMode) ? Routes.splash : Routes.home,
       ),
     );
   }

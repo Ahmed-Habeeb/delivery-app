@@ -42,7 +42,19 @@ extension TimeFormatter on int {
   String formatToMinutesSeconds() {
     final minutes = this ~/ 60;
     final seconds = this % 60;
-    return '${minutes.toString().padLeft(2, '0')}:${seconds.toString().padLeft(2, '0')}';
+    return '${minutes.toString().padLeft(2, '0')}:${seconds.toString().padLeft(
+        2, '0')}';
   }
 }
+
+
+extension LimitString on String {
+  String limit(int length) {
+    if (this.length > length) {
+      return substring(0, length);
+    }
+    return this;
+  }
+}
+
 

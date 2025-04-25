@@ -1,6 +1,13 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 
+import '../../features/home/data/data_source/local/order_local_datasource.dart';
+import '../../features/home/data/data_source/remote/order_remote_datasource.dart';
+import '../../features/home/data/local_database/order_database.dart';
+import '../../features/home/data/repos/order_repository_impl.dart';
+import '../../features/home/domain/repos/order_repository.dart';
+import '../../features/home/domain/usecases/get_delivery_bills.dart';
+import '../../features/home/ui/cubit/home_cubit.dart';
 import '../../features/login/data/data_source/auth_remote_datasource.dart';
 import '../../features/login/data/repo/auth_repository_impl.dart';
 import '../../features/login/domain/repos/auth_repository.dart';
@@ -43,6 +50,17 @@ _registerDataSources() {
   getIt.registerLazySingleton<AuthRemoteDataSource>(
           () => AuthRemoteDataSourceImpl(client: getIt()));
 
+  getIt.registerLazySingleton(() => GetDeliveryBills(repository: getIt()));
+  getIt.registerLazySingleton<OrderRepository>(() => OrderRepositoryImpl(
+    remoteDataSource: getIt(),
+    localDataSource: getIt(),
+  ));
+  getIt.registerLazySingleton<OrderRemoteDataSource>(
+          () => OrderRemoteDataSourceImpl(client: getIt()));
+  getIt.registerLazySingleton<OrderLocalDataSource>(
+          () => OrderLocalDataSourceImpl(database: getIt()));
+  getIt.registerLazySingleton(() => OrderDatabase.instance);
+
 }
 
 /// Registers the cubits with GetIt
@@ -52,5 +70,6 @@ _registerDataSources() {
 _registerCubits() {
 
   getIt.registerFactory(() => AuthCubit(checkDeliveryLogin: getIt()));
+  getIt.registerFactory(() => HomeCubit(getDeliveryBills: getIt()));
 
 }

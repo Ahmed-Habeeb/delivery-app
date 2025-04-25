@@ -27,7 +27,8 @@ class LoginListener extends StatelessWidget {
         else if (state is AuthSuccess) {
           context.pop();
           AppSnackBars.successSnackBar("Login Successful");
-          context.offAllNamed(Routes.home);
+          String userID = context.read<AuthCubit>().userIDController.text;
+          context.offAllNamed(Routes.home,arguments: userID);
         }
       },
       child: SizedBox.shrink(),
