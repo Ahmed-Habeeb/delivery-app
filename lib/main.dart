@@ -9,6 +9,7 @@ import 'core/helper/cache_helper.dart';
 import 'core/routing/router.dart';
 import 'core/routing/routes.dart';
 import 'core/theme/colors_manager.dart';
+import 'core/widgets/session_wrapper.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -65,64 +66,66 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
 
   @override
   Widget build(BuildContext context) {
-    return ScreenUtilInit(
-      /// Sets the design size for screen util.
-      designSize: const Size(375, 812),
-      builder: (context, child) => MaterialApp(
-        /// Sets the navigator key for the application.
-        navigatorKey: AppContext.navigatorKey,
+    return SessionWrapper(
+      child: ScreenUtilInit(
+        /// Sets the design size for screen util.
+        designSize: const Size(375, 812),
+        builder: (context, child) => MaterialApp(
+          /// Sets the navigator key for the application.
+          navigatorKey: AppContext.navigatorKey,
 
-        /// Sets the title of the application.
-        title: 'Mashrouk Rider',
-        builder: (context, child) {
-          return MediaQuery.withClampedTextScaling(
-            minScaleFactor: 1.0,
-            maxScaleFactor: 1.0,
-            child: child!,
-          );
-        },
+          /// Sets the title of the application.
+          title: 'Mashrouk Rider',
+          builder: (context, child) {
+            return MediaQuery.withClampedTextScaling(
+              minScaleFactor: 1.0,
+              maxScaleFactor: 1.0,
+              child: child!,
+            );
+          },
 
-        /// Sets the theme of the application.
-        theme: ThemeData(
-          scaffoldBackgroundColor: Colors.white,
-          appBarTheme: AppBarTheme(
-            // backgroundColor: Colors.white,
-            // foregroundColor: Colors.white,
-            surfaceTintColor: Colors.white,
-            color: Colors.white,
+          /// Sets the theme of the application.
+          theme: ThemeData(
+            scaffoldBackgroundColor: Colors.white,
+            appBarTheme: AppBarTheme(
+              // backgroundColor: Colors.white,
+              // foregroundColor: Colors.white,
+              surfaceTintColor: Colors.white,
+              color: Colors.white,
 
-            elevation: 0,
-            iconTheme: IconThemeData(color: Colors.black),
+              elevation: 0,
+              iconTheme: IconThemeData(color: Colors.black),
+            ),
+            dialogTheme: DialogTheme(
+              backgroundColor: Colors.white,
+              surfaceTintColor: Colors.white,
+              elevation: 0,
+            ),
+            primaryColor: Colors.white,
+            canvasColor: ColorsManager.mainColor,
+            progressIndicatorTheme: ProgressIndicatorThemeData(
+              color: ColorsManager.mainColor,
+            ),
           ),
-          dialogTheme: DialogTheme(
-            backgroundColor: Colors.white,
-            surfaceTintColor: Colors.white,
-            elevation: 0,
-          ),
-          primaryColor: Colors.white,
-          canvasColor: ColorsManager.mainColor,
-          progressIndicatorTheme: ProgressIndicatorThemeData(
-            color: ColorsManager.mainColor,
-          ),
+
+          /// Hides the debug banner.
+          debugShowCheckedModeBanner: false,
+
+          /// Sets the localization delegates.
+          // localizationsDelegates: context.localizationDelegates,
+
+          /// Sets the supported locales.
+          // supportedLocales: context.supportedLocales,
+
+          /// Sets the current locale.
+          // locale: context.locale,
+
+          /// Sets the route generator for the application.
+          onGenerateRoute: AppRouter.generateRoute,
+
+          /// Sets the initial route of the application.
+          initialRoute: (!kDebugMode) ? Routes.splash : Routes.home,
         ),
-
-        /// Hides the debug banner.
-        debugShowCheckedModeBanner: false,
-
-        /// Sets the localization delegates.
-        // localizationsDelegates: context.localizationDelegates,
-
-        /// Sets the supported locales.
-        // supportedLocales: context.supportedLocales,
-
-        /// Sets the current locale.
-        // locale: context.locale,
-
-        /// Sets the route generator for the application.
-        onGenerateRoute: AppRouter.generateRoute,
-
-        /// Sets the initial route of the application.
-        initialRoute: (!kDebugMode) ? Routes.splash : Routes.home,
       ),
     );
   }

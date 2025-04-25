@@ -31,41 +31,39 @@ class HomeHeader extends StatelessWidget {
               ),
             ),
           ),
-          SafeArea(
-            child: Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: 16.w,
+          Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: 16.w,
 
 
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    constraints: BoxConstraints(maxWidth: 170.w),
-                    margin:  EdgeInsets.only(top: 15.h),
-                    child: Text(
-                      "Ahmed Othman",
-                      style: TextStyles.font24Bold,
-                    ),
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  constraints: BoxConstraints(maxWidth: 150.w),
+                  margin:  EdgeInsets.only(top: 25.h),
+                  child: Text(
+                    "Ahmed Othman",
+                    style: TextStyles.font24Bold,
                   ),
-                  Image.asset(Assets.imagesDeliveryMan),
-                  Container(
-                    decoration: BoxDecoration(
-                        borderRadius:  BorderRadius.circular(5.r),
-                        color: Colors.white
-                    ),
-                    margin:  EdgeInsets.only(top: 15.h),
-                    padding: EdgeInsets.all(4.r),
-                    child: Icon(
-                      Icons.language,
-                      color: ColorsManager.mainColor,
-                      // size: 30,
-                    ),
+                ),
+                Image.asset(Assets.imagesDeliveryMan,),
+                Container(
+                  decoration: BoxDecoration(
+                      borderRadius:  BorderRadius.circular(5.r),
+                      color: Colors.white
                   ),
-                ],
-              ),
+                  margin:  EdgeInsets.only(top: 35.h),
+                  padding: EdgeInsets.all(4.r),
+                  child: Icon(
+                    Icons.language,
+                    color: ColorsManager.mainColor,
+                    // size: 30,
+                  ),
+                ),
+              ],
             ),
           ),
         ],

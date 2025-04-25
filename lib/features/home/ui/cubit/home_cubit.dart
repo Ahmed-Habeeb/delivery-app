@@ -1,3 +1,5 @@
+import 'package:delivery_app/core/helper/app_context.dart';
+import 'package:delivery_app/core/helper/session_manager.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../domain/usecases/get_delivery_bills.dart';
@@ -14,8 +16,6 @@ class HomeCubit extends Cubit<HomeState> {
 
   bool isNewSelected = true;
 
-
-
   HomeCubit({required this.getDeliveryBills}) : super(HomeInitial());
 
   Future<void> fetchDeliveryBills({
@@ -23,9 +23,8 @@ class HomeCubit extends Cubit<HomeState> {
     required String langNo,
     required String billSrl,
     required String prcssdFlg,
-  }) async
-  {
-    debugPrint( 'Fetching delivery bills...');
+  }) async {
+    debugPrint('Fetching delivery bills...');
 
     emit(HomeLoading());
     try {
@@ -36,8 +35,11 @@ class HomeCubit extends Cubit<HomeState> {
         prcssdFlg: prcssdFlg,
       );
       _bills = billsData;
-      debugPrint ('Fetched ${_bills.length} bills');
+      debugPrint('Fetched ${_bills.length} bills');
       _categorizeBills();
+      if (AppContext.context != null) {
+        SessionManager().resetSessionTimer(AppContext.context!);
+      }
       emit(HomeSuccess(bills: _bills));
     } catch (e) {
       debugPrint('Error fetching delivery bills: $e');
@@ -51,12 +53,13 @@ class HomeCubit extends Cubit<HomeState> {
     otherBills = _bills.where((bill) => bill.dlvryStatusFlg != '0').toList();
   }
 
-
-
   void changeNewBillState(bool isSelected) {
     emit(ChangeNewBillStateLoading());
     isNewSelected = isSelected;
     _categorizeBills();
+    if (AppContext.context != null) {
+      SessionManager().resetSessionTimer(AppContext.context!);
+    }
     emit(ChangeNewBillStateSuccess());
   }
 }
