@@ -1,8 +1,7 @@
 #  Delivery App
 
-![Flutter](https://img.shields.io/badge/Flutter-3.10.0-blue.svg)
-![Dart](https://img.shields.io/badge/Dart-3.0.0-blue.svg)
-![License](https://img.shields.io/badge/license-MIT-green.svg)
+![Flutter](https://img.shields.io/badge/Flutter-3.29.2-blue.svg)
+![Dart](https://img.shields.io/badge/Dart-3.7.2-blue.svg)
 
 The **Delivery App** is a Flutter-based mobile application designed for delivery personnel to manage orders efficiently. It integrates with the  Delivery Service API to authenticate users and fetch delivery bills, with offline support through caching and session management for enhanced security.
 
