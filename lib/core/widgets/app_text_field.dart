@@ -295,7 +295,7 @@ class AppTextFormField extends StatelessWidget {
         ];
       case AppTextFieldType.number:
         return [
-          // FilteringTextInputFormatter.allow(RegExp(r'[0-9]+')),
+          FilteringTextInputFormatter.allow(RegExp(r'[0-9]+')),
           LengthLimitingTextInputFormatter(max ?? 250),
         ];
       case AppTextFieldType.phone:

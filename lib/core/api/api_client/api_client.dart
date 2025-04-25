@@ -65,6 +65,13 @@ class ApiClient extends BaseDio {
         onReceiveProgress: onReceiveProgress,
       );
       if (res.statusCode == 200 || res.statusCode == 201) {
+
+
+        if(res.data['Result']['ErrNo'] == 0) {
+          return ResponseModel(success: true, data: res.data);
+        } else {
+          return ResponseModel(success: false, error: res.data['Result']['ErrMsg']);
+        }
         return ResponseModel(success: true, data: res.data);
       } else {
         return ApiErrorHandler.handleError(res);

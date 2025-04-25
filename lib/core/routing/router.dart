@@ -1,8 +1,11 @@
+import 'package:delivery_app/core/di/di.dart';
 import 'package:delivery_app/core/routing/routes.dart';
 import 'package:delivery_app/features/home/ui/screen/home_screen.dart';
+import 'package:delivery_app/features/login/ui/cubit/login_cubit.dart';
 import 'package:delivery_app/features/login/ui/screen/login_screen.dart';
 import 'package:delivery_app/features/splash/ui/splash_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 /// A class that handles the routing for the application.
 class AppRouter {
@@ -26,8 +29,11 @@ class AppRouter {
       case Routes.login:
         return MaterialPageRoute(
           builder:
-              (_) => getScreen(
-                LoginScreen(), // Replace with your actual login screen
+              (_) => BlocProvider(
+                create: (context) => getIt<AuthCubit>(),
+                child: getScreen(
+                  LoginScreen(), // Replace with your actual login screen
+                ),
               ),
         );
       case Routes.home:

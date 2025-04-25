@@ -1,10 +1,8 @@
 class Constants {
   static const String token = "token";
   // live
-  static const String apiUrl = "https://api.mashrouk.com/api/v1.0/";
-  static const String osrmUrl = "https://osrm.mashrouk.com/";
-  static const String socketUrl = 'https://ws.mashrouk.com/';
-  static const String orderSocket = 'https://ws.live.mashrouk.com/';
+  static const String apiUrl = "https://mdev.yemensoft.net:473/OnyxDeliveryService/Service.svc/";
+
 
 
 
