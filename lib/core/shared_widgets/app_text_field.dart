@@ -154,120 +154,125 @@ class AppTextFormField extends StatelessWidget {
           ),
         (type == AppTextFieldType.phone)
             ? PhoneField(
-                availableCountries: ["SA", "EG"],
-                // languageCode: context.locale.languageCode,
-                builder: (context, country, pick) => Row(
-                      mainAxisSize: MainAxisSize.min,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      spacing: 8.w,
-                      children: [
-                        Container(
-                          width: 105.w,
-                          height: 52.h,
-                          // padding: EdgeInsets.symmetric(horizontal: 16.w,vertical: 10.h),
-                          decoration: BoxDecoration(
-                            color: ColorsManager.fieldColor,
-                            borderRadius: BorderRadius.circular(12.0),
-                          ),
-                          child: Center(
-                            child: InkWell(
-                              onTap: pick,
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                spacing: 10.w,
-                                children: [
-                                  Text(country.flag,
-                                      style: TextStyles.font24Medium
-                                          .copyWith(fontSize: 26.sp)),
-                                  Icon(
-                                    Icons.keyboard_arrow_down_outlined,
-                                    color: Colors.grey,
-                                    size: 25.h,
+              availableCountries: ["SA", "EG"],
+              // languageCode: context.locale.languageCode,
+              builder:
+                  (context, country, pick) => Row(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    spacing: 8.w,
+                    children: [
+                      Container(
+                        width: 105.w,
+                        height: 52.h,
+                        // padding: EdgeInsets.symmetric(horizontal: 16.w,vertical: 10.h),
+                        decoration: BoxDecoration(
+                          color: ColorsManager.fieldColor,
+                          borderRadius: BorderRadius.circular(12.0),
+                        ),
+                        child: Center(
+                          child: InkWell(
+                            onTap: pick,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              spacing: 10.w,
+                              children: [
+                                Text(
+                                  country.flag,
+                                  style: TextStyles.font24Medium.copyWith(
+                                    fontSize: 26.sp,
                                   ),
-                                ],
-                              ),
+                                ),
+                                Icon(
+                                  Icons.keyboard_arrow_down_outlined,
+                                  color: Colors.grey,
+                                  size: 25.h,
+                                ),
+                              ],
                             ),
                           ),
                         ),
-                        Expanded(
-                          child: TextFormField(
-                            focusNode: focusNode,
-                            autovalidateMode:
-                                AutovalidateMode.onUserInteraction,
-                            textAlign: TextAlign.start,
-                            textDirection: TextDirection.ltr,
-                            onTap: onTap,
-                            readOnly: onTap != null || !enabled,
-                            // controller: controller,
-                            maxLines: maxLines,
-                            autofocus: autoFocus ?? false,
-                            keyboardType: keyboardType ?? _customKeyBoard(type),
-                            inputFormatters: [
-                              ..._customRegex(type, maxChar) ?? [],
-                              ...inputFormatters ?? [],
-                            ],
-                            maxLength: country.maxLength,
-                            onChanged: (value) {
-                              controller?.text = "+${country.dialCode}$value";
-                              onChanged?.call(value);
-                            },
+                      ),
+                      Expanded(
+                        child: TextFormField(
+                          focusNode: focusNode,
+                          autovalidateMode: AutovalidateMode.onUserInteraction,
+                          textAlign: TextAlign.start,
+                          textDirection: TextDirection.ltr,
+                          onTap: onTap,
+                          readOnly: onTap != null || !enabled,
+                          // controller: controller,
+                          maxLines: maxLines,
+                          autofocus: autoFocus ?? false,
+                          keyboardType: keyboardType ?? _customKeyBoard(type),
+                          inputFormatters: [
+                            ..._customRegex(type, maxChar) ?? [],
+                            ...inputFormatters ?? [],
+                          ],
+                          maxLength: country.maxLength,
+                          onChanged: (value) {
+                            controller?.text = "+${country.dialCode}$value";
+                            onChanged?.call(value);
+                          },
 
-                            obscureText: isObscureText ?? false,
-                            style:
-                                inputTextStyle ?? TextStyles.font12RegularBlack,
-
-                          ),
+                          obscureText: isObscureText ?? false,
+                          style:
+                              inputTextStyle ?? TextStyles.font12RegularBlack,
                         ),
-                      ],
-                    ))
+                      ),
+                    ],
+                  ),
+            )
             : TextFormField(
           focusNode: focusNode,
-                autovalidateMode: AutovalidateMode.onUserInteraction,
-                onTap: onTap,
-                readOnly: onTap != null || !enabled,
-                controller: controller,
-                maxLines: maxLines,
-                autofocus: autoFocus ?? false,
-                keyboardType: keyboardType ?? _customKeyBoard(type),
-                inputFormatters: [
-                  ..._customRegex(type, maxChar) ?? [],
-                  ...inputFormatters ?? [],
-                ],
-                onChanged: onChanged,
-                cursorColor: cursorColor,
-                decoration: InputDecoration(
-                  prefixIcon: prefixIcon,
-                  isDense: true,
-                  labelStyle: hintStyle ?? TextStyles.font12RegularGrey,
-                  contentPadding: contentPadding ??
-                      EdgeInsets.symmetric(horizontal: 16.w, vertical: 14.h),
-                  /// Updated hint style to match the design
-                  hintStyle: hintStyle ?? TextStyles.font16RegularBlack.copyWith(
-                    color: ColorsManager.hintColor,
-                  ),
-                  hintText: hintText,
-                  suffixIcon: suffixIcon,
-                  fillColor: backgroundColor ?? ColorsManager.fieldColor,
-                  filled: true,
-                  border: enabledBorder ??
-                      OutlineInputBorder(
-                        borderSide: BorderSide.none,
-                        borderRadius: BorderRadius.circular(12.0),
-                      ),
-                ),
-                obscureText: isObscureText ?? false,
-                style: inputTextStyle ?? TextStyles.font12RegularBlack,
-                validator: (value) {
-                  if (value == null || value.trim().isEmpty) {
-                    return "Please enter ${nameText ?? hintText}";
-                  } else if (!ValidationHelper.validate(value.trim(), type)) {
-                    return "Please enter a valid ${nameText ?? hintText}";
-                  }
+          autovalidateMode: AutovalidateMode.onUserInteraction,
+          onTap: onTap,
+          readOnly: onTap != null || !enabled,
+          controller: controller,
+          maxLines: maxLines,
+          autofocus: autoFocus ?? false,
+          keyboardType: keyboardType ?? _customKeyBoard(type),
+          inputFormatters: [
+            ..._customRegex(type, maxChar) ?? [],
+            ...inputFormatters ?? [],
+          ],
+          onChanged: onChanged,
+          cursorColor: cursorColor,
+          textAlign: TextAlign.center, // Center the hint and input text
+          decoration: InputDecoration(
+            prefixIcon: prefixIcon,
+            isDense: true,
+            labelStyle: hintStyle ?? TextStyles.font12RegularGrey,
+            contentPadding:
+            contentPadding ??
+                EdgeInsets.symmetric(horizontal: 16.w, vertical: 14.h),
+            hintStyle:
+            hintStyle ??
+                TextStyles.font14RegularBlack,
 
-                  return validator?.call(value.trim());
-                },
-              ),
+            hintText: hintText,
+            suffixIcon: suffixIcon,
+            fillColor: backgroundColor ?? ColorsManager.fieldColor,
+            filled: true,
+            border:
+            enabledBorder ??
+                OutlineInputBorder(
+                  borderSide: BorderSide.none,
+                  borderRadius: BorderRadius.circular(22),
+                ),
+          ),
+          obscureText: isObscureText ?? false,
+          style: inputTextStyle ?? TextStyles.font12RegularBlack,
+          validator: (value) {
+            if (value == null || value.trim().isEmpty) {
+              return "Please enter ${nameText ?? hintText}";
+            } else if (!ValidationHelper.validate(value.trim(), type)) {
+              return "Please enter a valid ${nameText ?? hintText}";
+            }
+            return validator?.call(value.trim());
+          },
+        ),
       ],
     );
   }
@@ -281,14 +286,11 @@ class AppTextFormField extends StatelessWidget {
           LengthLimitingTextInputFormatter(max ?? 250),
         ];
       case AppTextFieldType.password:
-        return [
-          LengthLimitingTextInputFormatter(max ?? 200),
-        ];
+        return [LengthLimitingTextInputFormatter(max ?? 200)];
       case AppTextFieldType.text:
         return [
           // FilteringTextInputFormatter.allow(RegExp(r'[a-zA-Z\u0600-\u06FF ]+')),
           //deny special characters
-
           LengthLimitingTextInputFormatter(max ?? 1000),
         ];
       case AppTextFieldType.number:
@@ -305,17 +307,17 @@ class AppTextFormField extends StatelessWidget {
         return [
           FilteringTextInputFormatter.allow(RegExp(r'[a-zA-Z\u0600-\u06FF ]+')),
           FilteringTextInputFormatter.deny(
-              RegExp(r'[!@#<>?":_`~;[\]\\|=+)(*&^%0-9-]')),
+            RegExp(r'[!@#<>?":_`~;[\]\\|=+)(*&^%0-9-]'),
+          ),
           FilteringTextInputFormatter.deny(
-              RegExp(r'[!@#<>؟"؛٪:_`~;[\]\\|=+)(*&^%0-9-]')),
+            RegExp(r'[!@#<>؟"؛٪:_`~;[\]\\|=+)(*&^%0-9-]'),
+          ),
           FilteringTextInputFormatter.deny(RegExp(r'[٠١٢٣٤٥٦٧٨٩]')),
           LengthLimitingTextInputFormatter(max ?? 50),
         ];
       case AppTextFieldType.price:
         return [
-          FilteringTextInputFormatter.allow(
-            RegExp(r'^\d+\.?\d{0,2}'),
-          ),
+          FilteringTextInputFormatter.allow(RegExp(r'^\d+\.?\d{0,2}')),
           LengthLimitingTextInputFormatter(max ?? 14),
         ];
       case AppTextFieldType.any:

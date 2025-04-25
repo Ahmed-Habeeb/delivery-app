@@ -1,4 +1,5 @@
 import 'package:delivery_app/core/routing/routes.dart';
+import 'package:delivery_app/features/login/ui/screen/login_screen.dart';
 import 'package:delivery_app/features/splash/ui/splash_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -21,6 +22,12 @@ class AppRouter {
     switch (settings.name) {
       case Routes.splash:
         return MaterialPageRoute(builder: (_) => getScreen(SplashScreen()));
+      case Routes.login:
+        return MaterialPageRoute(
+          builder: (_) => getScreen(
+            LoginScreen()// Replace with your actual login screen
+          ),
+        );
       // Add more routes here as needed
       default:
         return MaterialPageRoute(

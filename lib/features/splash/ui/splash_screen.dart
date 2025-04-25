@@ -17,7 +17,7 @@ class SplashScreen extends StatefulWidget {
 _navigateToNextScreen(BuildContext context) {
   // Navigate to the next screen after a delay
   Future.delayed(const Duration(seconds: 2), () {
-   context.toNamed(Routes.login);
+   context.offAllNamed(Routes.login);
   });
 }
 

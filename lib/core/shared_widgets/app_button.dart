@@ -71,7 +71,7 @@ class AppButton extends StatelessWidget {
         margin: margin,
         decoration: BoxDecoration(
             color: filled ? color : Colors.transparent,
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: BorderRadius.circular(22),
             border: !withBorder
                 ? null
                 : Border.all(

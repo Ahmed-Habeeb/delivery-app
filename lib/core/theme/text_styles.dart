@@ -29,9 +29,34 @@ class TextStyles {
       );
 
   /// Returns a text style with font size 16, regular weight, and black color.
-  static TextStyle get font16RegularBlack => GoogleFonts.inter(
-        fontSize: 16.sp,
+  // static TextStyle get font16RegularBlack => GoogleFonts.inter(
+  //       fontSize: 16.sp,
+  //       fontWeight: FontWeightHelper.regular,
+  //     );
+
+
+  static TextStyle get font29SemiBoldMainColor => GoogleFonts.montserrat(
+        fontSize: 29.sp,
+        fontWeight: FontWeightHelper.semiBold,
+        color: ColorsManager.mainColor,
+
+      );  static TextStyle get font12MediumMainColor => GoogleFonts.montserrat(
+        fontSize: 12.sp,
+        fontWeight: FontWeightHelper.medium,
+        color: ColorsManager.mainColor,
+
+      );
+ static TextStyle get font14RegularBlack => GoogleFonts.montserrat(
+        fontSize: 14.sp,
         fontWeight: FontWeightHelper.regular,
+
+
+      ); static TextStyle get font14SemiBoldMainColor => GoogleFonts.montserrat(
+        fontSize: 14.sp,
+        fontWeight: FontWeightHelper.semiBold,
+        color: ColorsManager.mainColor,
+
+
       );
 
 

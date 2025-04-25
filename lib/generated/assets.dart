@@ -3,6 +3,8 @@ class Assets {
   Assets._();
 
   static const String svgsBuildingsBackground = 'assets/svgs/buildings_background.svg';
+  static const String svgsCar = 'assets/svgs/car.svg';
+  static const String svgsCircle = 'assets/svgs/circle.svg';
   static const String svgsDeliveryMan = 'assets/svgs/delivery_man.svg';
   static const String svgsLogo = 'assets/svgs/logo.svg';
 
