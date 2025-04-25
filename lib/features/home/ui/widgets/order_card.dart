@@ -1,4 +1,3 @@
-import 'package:delivery_app/core/theme/colors_manager.dart';
 import 'package:delivery_app/core/theme/text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

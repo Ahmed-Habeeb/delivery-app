@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ToggleSwitch extends StatefulWidget {
+  const ToggleSwitch({super.key});
+
   @override
   _ToggleSwitchState createState() => _ToggleSwitchState();
 }
