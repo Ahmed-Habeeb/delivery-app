@@ -1,5 +1,6 @@
+import 'package:delivery_app/core/routing/routes.dart';
+import 'package:delivery_app/features/splash/ui/splash_screen.dart';
 import 'package:flutter/material.dart';
-
 
 /// A class that handles the routing for the application.
 class AppRouter {
@@ -18,16 +19,20 @@ class AppRouter {
     }
 
     switch (settings.name) {
-      case '/':
-        return MaterialPageRoute(
-          builder: (_) => getScreen( Container()),
-        );
+      case Routes.splash:
+        return MaterialPageRoute(builder: (_) => getScreen(SplashScreen()));
       // Add more routes here as needed
       default:
         return MaterialPageRoute(
-          builder: (_) => getScreen( Container()),
+          builder:
+              (_) => getScreen(
+                Scaffold(
+                  body: Center(
+                    child: Text('No route defined for ${settings.name}'),
+                  ),
+                ),
+              ),
         );
     }
-
   }
 }
